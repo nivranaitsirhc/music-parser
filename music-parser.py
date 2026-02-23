@@ -44,7 +44,7 @@ LANGUAGE = None  # "en"
 
 H_TITLE = "Smart Music Parser"
 H_SUBTITLE = "GreenLeaf Labworks"
-H_VERSION = "4"
+H_VERSION = "5"
 H_AUTHOR = "Christian Arvin Cabo"
 
 # Helpers
@@ -794,14 +794,14 @@ def type_positive_float_or_full(value):
 
 def type_method(value):
     try:
-        if value == 1:
+        if value == "1":
             return 1
-        elif value == 2:
+        elif value == "2":
             return 2
         elif value.lower() == 'all':
             return 'all'
         raise argparse.ArgumentTypeError(
-            f"'{value}' must be greater than 1, 2 ,all")
+            f"'{value}' must be 1, 2  or all")
     except ValueError:
         raise argparse.ArgumentTypeError(
             f"'{value}' is not a valid input, input 1, 2, all")
@@ -1668,7 +1668,7 @@ def main():
                     ]
                     save_update(
                         {
-                            "candidate": candidates_filtered
+                            "candidates": candidates_filtered
                         },
                         TRACK_ITEM, PROCESS_DATA, PROCESS_PATH
                     )
@@ -1791,7 +1791,7 @@ def main():
                         "m2_lyrics_sample": M2_LYRICS_SAMPLE,
                         "m2_lyrics_sample_chunks": M2_LYRICS_SAMPLE_CHUNKS,
                         "m2_lyricsearch_sample_duration": args.m2_lyricsearch_sample_duration,
-                        "m2_candidates": M2_CANDIDATES[:5]
+                        "m2_candidates": M2_CANDIDATES
                     },
                     TRACK_ITEM, PROCESS_DATA, PROCESS_PATH
                 )
@@ -1815,7 +1815,7 @@ def main():
                         ]
                         save_update(
                             {
-                                "candidate": candidates_filtered
+                                "candidates": candidates_filtered
                             },
                             TRACK_ITEM, PROCESS_DATA, PROCESS_PATH
                         )
